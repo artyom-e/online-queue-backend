@@ -1,0 +1,10 @@
+services:
+  node:
+    build: ./
+    user: root
+    volumes:
+      - ./../app:/usr/src/app
+    ports:
+      - 3000:3000
+    container_name: online-queue_node
+    command: ['npm', 'run', 'start:dev']
