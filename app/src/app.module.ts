@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import app from './config/app.config';
 import database from './config/database.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { QueuesModule } from './queues/queues.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         };
       }
     }),
+    QueuesModule
   ],
   controllers: [AppController],
   providers: [AppService],
