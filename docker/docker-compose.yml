@@ -8,3 +8,15 @@ services:
       - 3000:3000
     container_name: online-queue_node
     command: ['npm', 'run', 'start:dev']
+
+  postgres:
+    image: postgres
+    restart: always
+    # set shared memory limit when using docker-compose
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: online_queue
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
