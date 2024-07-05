@@ -6,12 +6,13 @@ import app from './config/app.config';
 import database from './config/database.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { QueuesModule } from './queues/queues.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [app, database]
+      load: [app, database],
     }),
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
@@ -26,9 +27,10 @@ import { QueuesModule } from './queues/queues.module';
           autoLoadEntities: true,
           synchronize: configService.get<string>('app.environment') === 'local',
         };
-      }
+      },
     }),
-    QueuesModule
+    QueuesModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

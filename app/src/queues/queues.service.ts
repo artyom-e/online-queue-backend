@@ -7,13 +7,11 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class QueuesService {
-  constructor(
-    @InjectRepository(Queue) private repo: Repository<Queue>
-  ) {}
+  constructor(@InjectRepository(Queue) private repo: Repository<Queue>) {}
 
   async create(createQueueDto: CreateQueueDto): Promise<Queue> {
     const queue = this.repo.create(createQueueDto);
-    
+
     return this.repo.save(queue);
   }
 
@@ -27,7 +25,7 @@ export class QueuesService {
 
   async update(id: number, updateQueueDto: UpdateQueueDto): Promise<Queue> {
     const queue = await this.findOne(id);
-    if(!queue) {
+    if (!queue) {
       throw new NotFoundException('Queue not found');
     }
     Object.assign(queue, updateQueueDto);
