@@ -34,6 +34,6 @@ export class QueuesService {
   }
 
   async remove(id: number): Promise<void> {
-    this.repo.delete(id);
+    await this.repo.delete(id);
   }
 }
