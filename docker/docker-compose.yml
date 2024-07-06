@@ -5,8 +5,7 @@ services:
     volumes:
       - ./../app:/usr/src/app
     ports:
-      - 3000:3000
-    container_name: online-queue_node
+      - ${NODE_PORT}:3000
     command: ['npm', 'run', 'start:dev']
 
   postgres:
@@ -20,4 +19,4 @@ services:
     volumes:
       - ./postgres:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - ${POSTGRES_PORT}:5432
