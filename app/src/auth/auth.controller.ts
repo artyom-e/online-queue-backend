@@ -6,7 +6,7 @@ import {
   HttpCode,
   Body,
 } from '@nestjs/common';
-import { LocalAuthGuard } from './local-auth.guard';
+import { LocalAuthGuard } from './guards/local-auth.guard';
 import { AuthService } from './auth.service';
 import { PublicRoute } from './public-route.decorator';
 import { SignupDto } from './dto/signup.dto';
