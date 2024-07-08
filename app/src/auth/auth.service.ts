@@ -16,9 +16,10 @@ export class AuthService {
     if (!user || !(await bcrypt.compare(pass, user.password))) {
       return null;
     }
-    //todo add hiding password
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password, ...preparedUser } = user;
 
-    return user;
+    return preparedUser;
   }
 
   async login(user: Partial<User>): Promise<object> {
